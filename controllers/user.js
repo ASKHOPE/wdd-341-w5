@@ -46,3 +46,56 @@ exports.getUser = (req, res) => {
       });
     });
 };
+
+
+exports.updateUser = async (req, res) => {
+  try {
+    const username = req.params.username;
+    if (!username) {
+      res.status(400).send({ message: "Invalid Username Supplied" });
+      return;
+    }
+    const password = req.body.password;
+    const passwordCheck = passwordUtil.passwordPass(password);
+    if (passwordCheck.error) {
+      res.status(400).send({ message: passwordCheck.error });
+      return;
+    }
+    User.findOne({ username: username }, function (err, user) {
+      user.username = req.params.username;
+      user.password = req.body.password;
+      user.firstName = req.body.firstName;
+      user.lastName = req.body.lastName;
+      user.info = req.body.info;
+      user.profile = req.body.profile;
+      user.save(function (err) {
+        if (err) {
+          res.status(500).json(err || "Error occurred while updating.");
+        } else {
+          res.status(204).send();
+        }
+      });
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+exports.deleteUser = async (req, res) => {
+  try {
+    const username = req.params.username;
+    if (!username) {
+      res.status(400).send({ message: "Invalid Username Supplied" });
+      return;
+    }
+    User.deleteOne({ username: username }, function (err, result) {
+      if (err) {
+        res.status(500).json(err || "˜Error occurred while deleting.");
+      } else {
+        res.status(204).send(result);
+      }
+    });
+  } catch (err) {
+    res.status(500).json(err || "Error occurred while deleting.");
+  }
+};
