@@ -11,7 +11,7 @@ POST http://localhost:8080/user
 content-type: application/json
 
 {
-"username": "Dane", "password": "Mundane@12345"
+"username": "Nates", "password": "Muard@12345"
 }
 
 #RENDER
@@ -26,5 +26,5 @@ POST  https://w5-339j.onrender.com/user
 content-type: application/json
 
 {
-"username": "Dane", "password": "Mundane@12345"
+"username": "Mary", "password": "MArtne@12345"
 }
