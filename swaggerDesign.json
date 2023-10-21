@@ -5,14 +5,14 @@
     "version": "1.0.0",
     "title": "Portfolio Builder",
     "contact": {
-      "email": "birchn@byui.edu"
+      "email": "kat21015@byui.edu"
     },
     "license": {
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "host": "localhost",
+  "host": "localhost:8080",
   "basePath": "/",
   "tags": [
     {
@@ -28,7 +28,7 @@
       "description": "These API endpoints are designed and will be created in the near future"
     }
   ],
-  "schemes": ["https"],
+  "schemes": ["http"],
   "paths": {
     "/theme/{themeName}": {
       "get": {
